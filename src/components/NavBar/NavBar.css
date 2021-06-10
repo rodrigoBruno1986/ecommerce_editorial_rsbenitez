@@ -1,0 +1,14 @@
+.contenido-menu{
+    display: flex;
+    padding: 20px;
+    background: black;
+}
+.contenido-menu li{
+    background: black;
+}
+.contenido-menu li:hover{
+    background: black !important;
+}
+.contenido-menu li span{
+    color: white;
+}
