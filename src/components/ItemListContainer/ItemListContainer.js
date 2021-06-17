@@ -1,5 +1,6 @@
 import React from "react";
 import "./ItemListContainer.css";
+import ItemCounts from "../ItemCounts/ItemCounts";
 
 class ItemListContainer extends React.Component {
   render() {
@@ -8,7 +9,11 @@ class ItemListContainer extends React.Component {
         <h1>
           {this.props.title} a {this.props.name}
         </h1>
-        ;
+        <ItemCounts
+          stock={5}
+          initial={1}
+          onAdd={(count) => console.log("agregado " + count)}
+        />
       </div>
     );
   }
