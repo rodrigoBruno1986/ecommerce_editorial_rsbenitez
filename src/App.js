@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <NavBar />,
-      <ItemListContainer title="Bienvenido" name="Coder House" />,
+      <ItemListContainer title="Bienvenido" name="Coder House"  />,
     </div>
   );
 }

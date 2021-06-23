@@ -21,6 +21,7 @@ function ItemCounts({ stock, initial, onAdd }) {
 
 
 
+
   return (
     <div>
       <p>{count}</p>
