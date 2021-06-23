@@ -23,18 +23,18 @@ export default function ItemListContainer(props) {
       id: 4,
       name: "Book Beth Smith",
       status: "usado",
-      precio: 2343,
+      precio: 243,
       image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
     },
   ];
 
-  const [dataContent, setDataContent] = useState();
+  const [dataContent, setDataContent] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Data), 2000);
+      setTimeout(() => resolve(Data), 3000);
     }).then((dataContentResolve) => {
       setDataContent(dataContentResolve);
       // console.log(dataContentResolve);

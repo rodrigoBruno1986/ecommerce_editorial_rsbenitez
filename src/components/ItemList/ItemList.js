@@ -1,15 +1,20 @@
 import React from "react";
 import Item from "../Item/Item";
+import "./ItemList.css";
 
 export default function ItemList(data) {
   const ResultData = data.resultado;
   console.log(ResultData);
 
   return (
-    <div>
-      {ResultData.map((el) => {
-        <Item name={el.name}></Item>;
-      })}
+    <div className="contentItemList">
+      {ResultData === undefined ? (
+        <p>no se cargo</p>
+      ) : (
+        ResultData.map((el) => (
+          <Item src={el.image} name={el.name} precio={el.precio} />
+        ))
+      )}
     </div>
   );
 }

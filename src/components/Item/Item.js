@@ -1,11 +1,16 @@
 import React from "react";
+import "antd/dist/antd.css";
+import { Card } from "antd";
+
+const { Meta } = Card;
 
 export default function Item(props) {
   return (
     <div>
-      <h1>{props.name}</h1>
-      <p>{props.status}</p>
-      <span>{props.precio}</span>
+      <Card hoverable style={{ width: 240 }} cover={<img src={props.src} />}>
+        <Meta title={props.name} />
+        <p> precio ${props.precio}</p>
+      </Card>
     </div>
   );
 }
