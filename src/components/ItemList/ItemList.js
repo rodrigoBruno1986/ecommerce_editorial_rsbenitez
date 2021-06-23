@@ -8,13 +8,9 @@ export default function ItemList(data) {
 
   return (
     <div className="contentItemList">
-      {ResultData === undefined ? (
-        <p>no se cargo</p>
-      ) : (
-        ResultData.map((el) => (
-          <Item src={el.image} name={el.name} precio={el.precio} />
-        ))
-      )}
+      {ResultData.map((el) => (
+        <Item src={el.image} name={el.name} precio={el.precio} />
+      ))}
     </div>
   );
 }
