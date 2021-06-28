@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import "antd/dist/antd.css";
+import { Button } from "antd";
+
 function ItemCounts({ stock, initial, onAdd }) {
   const [count, setCount] = useState(initial);
 
@@ -19,16 +22,13 @@ function ItemCounts({ stock, initial, onAdd }) {
     }
   };
 
-
-
-
   return (
     <div>
       <p>{count}</p>
 
-      <button onClick={addCont}>+</button>
-      <button onClick={restCont}>-</button>
-      <button onClick={()=>onAdd(count)}> Agregar</button>
+      <Button onClick={addCont}>+</Button>
+      <Button onClick={restCont}>-</Button>
+      <Button onClick={() => onAdd(count)}> Agregar</Button>
     </div>
   );
 }

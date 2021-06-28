@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ItemListContainer.css";
 import ItemCounts from "../ItemCounts/ItemCounts";
 import ItemList from "../ItemList/ItemList";
+import Stopwach from "../../images/Stopwatch.gif";
 
 export default function ItemListContainer(props) {
   const Data = [
@@ -26,6 +27,34 @@ export default function ItemListContainer(props) {
       precio: 243,
       image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
     },
+    {
+      id: 23,
+      name: "Book historia",
+      status: "nuevo",
+      precio: 2243,
+      image: "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
+    },
+    {
+      id: 323,
+      name: "Book historia",
+      status: "nuevo",
+      precio: 723,
+      image: "https://rickandmortyapi.com/api/character/avatar/37.jpeg",
+    },
+    {
+      id: 3623,
+      name: "Book del Arte ",
+      status: "nuevo",
+      precio: 7623,
+      image: "https://rickandmortyapi.com/api/character/avatar/31.jpeg",
+    },
+    {
+      id: 23,
+      name: "Book maritima",
+      status: "nuevo",
+      precio: 7623,
+      image: "https://rickandmortyapi.com/api/character/avatar/431.jpeg",
+    },
   ];
 
   const [dataContent, setDataContent] = useState([]);
@@ -43,7 +72,11 @@ export default function ItemListContainer(props) {
   }, []);
 
   if (loading) {
-    return <div>Loading....</div>;
+    return (
+      <div className="loading">
+        <img src={Stopwach}></img>
+      </div>
+    );
   }
 
   return (

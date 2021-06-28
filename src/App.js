@@ -1,12 +1,14 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Content from "./components/Content/Content";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div>
       <NavBar />,
-      <ItemListContainer title="Bienvenido" name="Coder House"  />,
+      <Content />,
+      <Footer />
     </div>
   );
 }
