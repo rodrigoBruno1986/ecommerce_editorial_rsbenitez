@@ -3,8 +3,8 @@ import ItemListContainer from "../ItemListContainer/ItemListContainer";
 
 export default function Content() {
   return (
-    <div>
-      <ItemListContainer title="Bienvenido" name="Coder House" />,
+    <div className="count-content">
+      <ItemListContainer title="Welcome to " name="React JS" />
     </div>
   );
 }

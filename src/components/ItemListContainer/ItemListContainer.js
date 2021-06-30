@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import "./ItemListContainer.css";
 import ItemCounts from "../ItemCounts/ItemCounts";
 import ItemList from "../ItemList/ItemList";
 import Stopwach from "../../images/Stopwatch.gif";
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 
 export default function ItemListContainer(props) {
   const Data = [
@@ -46,7 +47,7 @@ export default function ItemListContainer(props) {
       name: "Book del Arte ",
       status: "nuevo",
       precio: 7623,
-      image: "https://rickandmortyapi.com/api/character/avatar/31.jpeg",
+      image: "https://rickandmortyapi.com/api/character/avatar/39.jpeg",
     },
     {
       id: 23,
@@ -80,16 +81,21 @@ export default function ItemListContainer(props) {
   }
 
   return (
-    <div className="Item-style">
-      <h1>
-        {props.title} a {props.name}
-      </h1>
-      <ItemCounts
-        stock={5}
-        initial={1}
-        onAdd={(count) => console.log("agregado " + count)}
-      />
-      <ItemList resultado={dataContent} />
-    </div>
+    <Fragment>
+      <div className="Item-style">
+        <h1>
+          {props.title} {props.name}
+        </h1>
+        <ItemCounts
+          stock={5}
+          initial={1}
+          onAdd={(count) => console.log("agregado " + count)}
+        />
+        <ItemList resultado={dataContent} />
+      </div>
+      <div>
+        <ItemDetailContainer />
+      </div>
+    </Fragment>
   );
 }
