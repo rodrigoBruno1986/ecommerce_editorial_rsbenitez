@@ -4,18 +4,16 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import Stopwach from "../../images/Stopwatch.gif";
 
 export default function ItemDetailContainer() {
-  const Data_new = [
-    {
-      id: 232,
-      name: "Book Morty Smith",
-      status: "usado",
-      precio: 343,
-      description: "ultimo numero",
-      image: "https://rickandmortyapi.com/api/character/avatar/22.jpeg",
-    },
-  ];
+  const Data_new = {
+    id: 232,
+    name: "Book Morty Smith",
+    status: "usado",
+    precio: 343,
+    description: "ultimo numero",
+    image: "https://rickandmortyapi.com/api/character/avatar/22.jpeg",
+  };
 
-  const [item, setItem] = useState([{}]);
+  const [item, setItem] = useState({});
   const [load, setLoad] = useState(false);
 
   const getItems = () =>
@@ -41,11 +39,7 @@ export default function ItemDetailContainer() {
 
   return (
     <div>
-      <ItemDetail
-        name={item[0].name}
-        src={item[0].image}
-        precio={item[0].precio}
-      />
+      <ItemDetail name={item.name} src={item.image} precio={item.precio} />
     </div>
   );
 }
