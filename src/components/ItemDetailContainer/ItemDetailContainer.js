@@ -1,45 +1,51 @@
 import React, { useEffect, useState } from "react";
 import "./ItemDetailContainer.css";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import Stopwach from "../../images/Stopwatch.gif";
+import Data from "../../Data";
+import { useParams } from "react-router-dom";
 
 export default function ItemDetailContainer() {
-  const Data_new = {
-    id: 232,
-    name: "Book Morty Smith",
-    status: "usado",
-    precio: 343,
-    description: "ultimo numero",
-    image: "https://rickandmortyapi.com/api/character/avatar/22.jpeg",
-  };
-
-  const [item, setItem] = useState({});
-  const [load, setLoad] = useState(false);
+  const [item, setItem] = useState([]);
 
   const getItems = () =>
     new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Data_new), 2000);
+      setTimeout(() => resolve(Data), 2000);
     });
 
+  const { id } = useParams();
+
   useEffect(() => {
-    setLoad(true);
     getItems().then((dataContentResolve) => {
-      setItem(dataContentResolve);
-      setLoad(false);
+      dataContentResolve.filter((el) => {
+        if (el.id === id) {
+          setItem(el);
+        } else {
+        }
+      });
     });
   }, []);
 
-  if (load) {
-    return (
-      <div className="load">
-        <img src={Stopwach}></img>
-      </div>
-    );
-  }
-
   return (
     <div>
-      <ItemDetail name={item.name} src={item.image} precio={item.precio} />
+      <ItemDetail
+        item={item}
+        name={item.name}
+        src={item.image}
+        genero={item.genero}
+        precio={item.precio}
+      />
     </div>
   );
 }
+
+//asinc para llamar a una api
+
+// const getCharacter = async () => {
+//   const response = await fetch("http del api");
+//   const dataInfo = await response.json();
+//   setItem(dataInfo);
+// };
+
+// useEffect(()=>{
+//   getCharacter();
+// })
