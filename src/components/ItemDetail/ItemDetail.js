@@ -1,31 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./ItemDetail.css";
 import ItemCounts from "../ItemCounts/ItemCounts";
-import { Card } from "antd";
 import { Button } from "antd";
-
-const { Meta } = Card;
+import { Link } from "react-router-dom";
 
 export default function ItemDetail(props) {
   const [quantityToAdd, setquantityToAdd] = useState(0);
 
   return (
     <div className="CardItem">
-      <Card hoverable style={{ width: 240 }} cover={<img src={props.src} />}>
-        <Meta title={props.name} />
-        <p>{props.genero}</p>
-        <p> precio ${props.precio}</p>
-        <div>
-          <ItemCounts stock={5} initial={1} onAdd={setquantityToAdd} />
+      <div class="col-md-8">
+        <div class="row justify-content-md-center g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block">
+            <img src={props.src} />
+          </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">
+              Número de id : {props.id}
+            </strong>
+            <h3 class="mb-0">{props.name}</h3>
+            <p class="card-text mb-auto">{props.description}</p>
+            <h4 class="card-text mb-auto">${props.precio}</h4>
+            <div className="content-count">
+              <ItemCounts stock={5} initial={1} onAdd={setquantityToAdd} />
+              {quantityToAdd ? (
+                <Link to="/carts">
+                  <Button type="primary">Termina tu compra</Button>
+                </Link>
+              ) : (
+                console.log("no muestra  el boton")
+              )}
+            </div>
+          </div>
         </div>
-
-        {quantityToAdd ? (
-          <Button>Termina tu compra</Button>
-        ) : (
-          console.log("no muestra  el boton")
-        )}
-      </Card>
+      </div>
     </div>
   );
 }

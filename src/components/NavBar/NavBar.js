@@ -1,9 +1,11 @@
 import React from "react";
 import "./NavBar.css";
 import logo from "../../images/icon.png";
+import user from "../../images/user.png";
+import carrito from "../../images/shopping-cart.png";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown, Badge } from "antd";
 
 export default function Navbar() {
   const menu = (
@@ -58,7 +60,15 @@ export default function Navbar() {
                 </li>
               </div>
             </ul>
-            <span class="navbar-text">Navbar text with an inline element</span>
+            <a href="#">
+              <img className="user" src={user} />
+            </a>
+            <a href="#">
+              <Badge count={1}>
+                <img className="carrito" src={carrito} />
+              </Badge>
+            </a>
+            ,
           </div>
         </div>
       </nav>
