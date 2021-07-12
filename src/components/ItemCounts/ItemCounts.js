@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 
-function ItemCounts({ stock, initial, onAdd, handleChange }) {
+function ItemCounts({ stock, initial, onAdd }) {
   const [count, setCount] = useState(initial);
 
   const addCont = (e) => {

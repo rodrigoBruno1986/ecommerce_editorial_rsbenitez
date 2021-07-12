@@ -6,7 +6,7 @@ import { Button } from "antd";
 import { Link } from "react-router-dom";
 
 export default function ItemDetail(props) {
-  const [quantityToAdd, setquantityToAdd] = useState(0);
+  const [quantityToAdd, setquantityToAdd] = useState(false);
 
   return (
     <div className="CardItem">
@@ -23,13 +23,19 @@ export default function ItemDetail(props) {
             <p class="card-text mb-auto">{props.description}</p>
             <h4 class="card-text mb-auto">${props.precio}</h4>
             <div className="content-count">
-              <ItemCounts stock={5} initial={1} onAdd={setquantityToAdd} />
-              {quantityToAdd ? (
+              {quantityToAdd === true ? (
                 <Link to="/carts">
                   <Button type="primary">Termina tu compra</Button>
                 </Link>
               ) : (
-                console.log("no muestra  el boton")
+                <ItemCounts
+                  stock={5}
+                  initial={1}
+                  onAdd={(count) => {
+                    setquantityToAdd(true);
+                    alert(`Se agregaron ${count} items`);
+                  }}
+                />
               )}
             </div>
           </div>
