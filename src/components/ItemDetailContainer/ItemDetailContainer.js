@@ -27,13 +27,7 @@ export default function ItemDetailContainer() {
 
   return (
     <div>
-      <ItemDetail
-        item={item}
-        name={item.name}
-        src={item.image}
-        genero={item.genero}
-        precio={item.precio}
-      />
+      <ItemDetail name={item.name} src={item.image} precio={item.precio} />
     </div>
   );
 }

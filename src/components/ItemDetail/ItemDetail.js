@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import "./ItemDetail.css";
+import ItemCounts from "../ItemCounts/ItemCounts";
 import { Card } from "antd";
-// import ItemcCount from "../ItemCounts/ItemCounts";
+import { Button } from "antd";
 
 const { Meta } = Card;
 
-export default function Item(props) {
-  return props ? (
+export default function ItemDetail(props) {
+  const [quantityToAdd, setquantityToAdd] = useState(0);
+
+  return (
     <div className="CardItem">
-      <Card
-        hoverable
-        style={{ width: 240 }}
-        cover={<img src={props.item.image} />}
-      >
-        <Meta title={props.item.name} />
-        <p>{props.item.precio}</p>
-        {/* <ItemcCount
-          stock={5}
-          initial={1}
-          onAdd={(count) => console.log("agregado " + count)}
-        /> */}
+      <Card hoverable style={{ width: 240 }} cover={<img src={props.src} />}>
+        <Meta title={props.name} />
+        <p>{props.genero}</p>
+        <p> precio ${props.precio}</p>
+        <div>
+          <ItemCounts stock={5} initial={1} onAdd={setquantityToAdd} />
+        </div>
+
+        {quantityToAdd ? (
+          <Button>Termina tu compra</Button>
+        ) : (
+          console.log("no muestra  el boton")
+        )}
       </Card>
     </div>
-  ) : (
-    <p>No se pudo cargar el producto</p>
   );
 }
