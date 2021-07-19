@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "antd/dist/antd.css";
 import "./ItemDetail.css";
 import ItemCounts from "../ItemCounts/ItemCounts";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { context } from "../contex/contex";
 
 export default function ItemDetail(props) {
   const [quantityToAdd, setquantityToAdd] = useState(false);
+
+  const { addToCart } = useContext(context);
 
   return (
     <div className="CardItem">
@@ -24,7 +27,7 @@ export default function ItemDetail(props) {
             <h4 class="card-text mb-auto">${props.precio}</h4>
             <div className="content-count">
               {quantityToAdd === true ? (
-                <Link to="/carts">
+                <Link to="/cart">
                   <Button type="primary">Termina tu compra</Button>
                 </Link>
               ) : (
@@ -33,7 +36,7 @@ export default function ItemDetail(props) {
                   initial={1}
                   onAdd={(count) => {
                     setquantityToAdd(true);
-                    alert(`Se agregaron ${count} items`);
+                    addToCart(props, count);
                   }}
                 />
               )}
