@@ -1,12 +1,13 @@
-.content-context{
-    display: flex;
-    align-items: flex-end;
-
-    background: red;
+.card{
+    width: 18rem;
 }
-.ProductItem{
+
+.botonEliminar{
     display: flex;
     justify-content: center;
-    height: 100vh;
-    align-items: center;
+    margin: 40px 0px 40px 0px;
+}
+
+.imgItem{
+    width: 40%;
 }
