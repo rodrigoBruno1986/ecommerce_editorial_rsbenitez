@@ -30,6 +30,9 @@ function App() {
           <Route exact path="/cart">
             <CartContext />
           </Route>
+          <Route exact path="/cartTotal">
+            <CartContext />
+          </Route>
         </Switch>
       </Router>
     </CartProvider>

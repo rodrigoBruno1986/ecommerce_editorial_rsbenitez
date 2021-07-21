@@ -4,10 +4,21 @@
 
 .botonEliminar{
     display: flex;
-    justify-content: center;
-    margin: 40px 0px 40px 0px;
+    padding-bottom: 45px;
+    justify-content: flex-end;
 }
 
 .imgItem{
-    width: 40%;
+    width: 50%;
+}
+
+.carritoTitulo{
+    margin: auto;
+    background: grey;
+    height: 200px;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+
 }

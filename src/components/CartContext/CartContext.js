@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { context } from "../contex/contex";
 import "./CardContext.css";
 export default function CartContext() {
-  const { cart, setCart, clear, removeItem } = useContext(context);
+  const { cart, clear, removeItem } = useContext(context);
   return (
     <div className="content-context">
       <div class="container">
+        <h2 className="carritoTitulo">TU CARRITO</h2>
         <div class="row align-items-center">
           {cart.map((el) => {
             return (

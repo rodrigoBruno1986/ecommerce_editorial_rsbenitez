@@ -2,7 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import logo from "../../images/icon.png";
 import user from "../../images/user.png";
-import carrito from "../../images/shopping-cart.png";
+import CardWidget from "../CardWidget/CardWidget";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import { Menu, Dropdown, Badge } from "antd";
@@ -64,11 +64,8 @@ export default function Navbar() {
               <img className="user" src={user} />
             </a>
             <a href="#">
-              <Badge count={1}>
-                <img className="carrito" src={carrito} />
-              </Badge>
+              <CardWidget />
             </a>
-            ,
           </div>
         </div>
       </nav>
