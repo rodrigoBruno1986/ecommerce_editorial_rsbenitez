@@ -1,0 +1,45 @@
+.contenedorCart{
+    border: solid 1px black;
+}
+.priceCart{
+    display: flex;
+    justify-content: flex-end;
+}
+.botonEliminar{
+    display: flex;
+    padding: 45px;
+    justify-content: center;
+}
+
+.contenidoCarritoVacio{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.borde{
+    border-bottom: 1px solid black;
+}
+.contenidoCarritoVacio img{
+    margin: auto;
+    display: block;
+}
+
+.contenidoCarritoVacio h3{
+text-align: center;
+margin-bottom: 60px;
+}
+
+.volverCompra{
+    margin-top: 30px;
+}
+.imgItem{
+    width: 50%;
+}
+
+.content-context{
+    display: flex;
+    align-items: center;
+    height: 500px;
+}

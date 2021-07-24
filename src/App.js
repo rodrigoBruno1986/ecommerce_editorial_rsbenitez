@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import CartContext from "./components/CartContext/CartContext";
+import Cart from "./components/Cart/Cart";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Pricing from "./pages/Pricing/Pricing";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
@@ -28,10 +28,10 @@ function App() {
             <CategoryContainer />
           </Route>
           <Route exact path="/cart">
-            <CartContext />
+            <Cart />
           </Route>
-          <Route exact path="/cartTotal">
-            <CartContext />
+          <Route exact path="/">
+            <ItemDetailContainer />
           </Route>
         </Switch>
       </Router>

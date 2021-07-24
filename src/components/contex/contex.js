@@ -13,7 +13,6 @@ export const CartProvider = ({ children }) => {
       setCart([...cart, newElement]);
     }
   };
-  console.log(cart);
 
   const clear = () => {
     setCart([]);
@@ -27,8 +26,28 @@ export const CartProvider = ({ children }) => {
     return cart.find((el) => el.item.id === id);
   };
 
+  const sumarPrecio = () => {
+    return cart.reduce(
+      (acc, element) => (acc += element.item.precio * element.quantity),
+      0
+    );
+  };
+  const sumarItemCarrito = () => {
+    return cart.reduce((acc, element) => (acc += element.quantity), 0);
+  };
+
   return (
-    <context.Provider value={{ addToCart, cart, setCart, clear, removeItem }}>
+    <context.Provider
+      value={{
+        addToCart,
+        cart,
+        setCart,
+        clear,
+        removeItem,
+        sumarPrecio,
+        sumarItemCarrito,
+      }}
+    >
       {children}
     </context.Provider>
   );

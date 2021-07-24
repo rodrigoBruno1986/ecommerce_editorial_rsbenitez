@@ -36,6 +36,7 @@ export default function ItemDetail(props) {
                   initial={1}
                   onAdd={(count) => {
                     setquantityToAdd(true);
+                    alert(`Se agregaron ${count} items de ${props.name}`);
                     addToCart(props, count);
                   }}
                 />
