@@ -2,10 +2,8 @@ import React from "react";
 import Item from "../Item/Item";
 import "./ItemList.css";
 
-export default function ItemList(data) {
-  const ResultData = data.resultado;
-
-  console.log(ResultData);
+export default function ItemList(props) {
+  const ResultData = props.resultado;
 
   return (
     <div className="contentItemList">

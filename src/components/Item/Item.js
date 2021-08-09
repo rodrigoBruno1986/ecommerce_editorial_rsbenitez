@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 export default function Item(props) {
+  console.log("item" + props.id);
   return (
     <div className="CardItems">
       <Link to={`/itemDetail/${props.id}`}>

@@ -3,27 +3,35 @@ import "./ItemDetailContainer.css";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Data from "../../Data";
 import { useParams } from "react-router-dom";
+import { getFirestore } from "../../firebase/index";
 
 export default function ItemDetailContainer() {
-  const [item, setItem] = useState([]);
-
-  const getItems = () =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Data), 2000);
-    });
+  const [item, setItem] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
-    getItems().then((dataContentResolve) => {
-      dataContentResolve.filter((el) => {
-        if (el.id === id) {
-          setItem(el);
+    setLoading(true);
+    const db = getFirestore();
+    const itemCollecition = db.collection("items");
+    const item = itemCollecition.doc(id);
+    item
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot === 0) {
+          console.log("no resultado");
         } else {
+          setItem({ id: querySnapshot.id, ...querySnapshot.data() });
         }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    });
-  }, []);
+  }, [id]);
 
   return (
     <div>

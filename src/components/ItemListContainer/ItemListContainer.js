@@ -5,9 +5,10 @@ import Data from "../../Data";
 import "antd/dist/antd.css";
 import { Carousel } from "antd";
 import { Spin } from "antd";
+import { getFirestore } from "../../firebase/index";
 
 export default function ItemListContainer(props) {
-  const [dataContent, setDataContent] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
   function onChange(a, b, c) {
@@ -24,22 +25,31 @@ export default function ItemListContainer(props) {
 
   useEffect(() => {
     setLoading(true);
-    new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Data), 3000);
-    }).then((dataContentResolve) => {
-      setDataContent(dataContentResolve);
-      // console.log(dataContentResolve);
-      setLoading(false);
-    });
+    const db = getFirestore();
+    const itemCollecition = db.collection("items");
+
+    itemCollecition
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot === 0) {
+          console.log("no resultado");
+        } else {
+          const data = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setItems(data);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <Spin />
-      </div>
-    );
-  }
+  console.log("el items de firebase es =>", items);
 
   return (
     <Fragment>
@@ -63,7 +73,7 @@ export default function ItemListContainer(props) {
           {props.title} {props.name}
         </h1>
 
-        <ItemList resultado={dataContent} />
+        <ItemList resultado={items} />
       </div>
     </Fragment>
   );
